@@ -1,0 +1,115 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.bell-container {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.notification {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    position: relative;
+    color: aliceblue;
+}
+
+.notification::before{
+    content: "\f0f3";
+    font-family: "fontAwesome";
+    display: block;
+    color: black;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+button:active{
+    transform: translateY(10%) translateX(10%);
+    box-shadow: 0px 0px 0px white;
+}
+
+.notification::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #d10074;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease-in-out;
+}
+
+.notification.active::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+button {
+    cursor: pointer;
+    background-color: black;
+    color: aliceblue;
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem;
+    border: none;
+    outline: none;
+    box-shadow: 5px 5px 0px black;
+    z-index: 999;
+    transition: 0.5s;
+    font-size: 2rem;
+}
+
+@keyframes bell{
+    0%{
+          transform: rotate(40deg);
+    }
+    12.5%{
+        transform: rotate(-35deg);
+    }
+    25%{
+        transform: rotate(30deg);
+    }
+    37.5%{
+        transform: rotate(-25deg);
+    }
+    50%{
+        transform: rotate(20deg);
+    }
+    62.5%{
+        transform: rotate(-15deg);
+    }
+    75%{
+        transform: rotate(10deg);
+    }
+    87.5%{
+        transform: rotate(-5deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
